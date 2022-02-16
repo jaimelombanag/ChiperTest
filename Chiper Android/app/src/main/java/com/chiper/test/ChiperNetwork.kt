@@ -4,6 +4,7 @@ package com.chiper.test
 import app.kaisa.tmdb.model.Movie
 import app.kaisa.tmdb.model.MovieResponse
 import app.kaisa.tmdb.model.MovieVideosResponse
+import com.chiper.test.model.MovieNowPlaying
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -11,12 +12,21 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 
 
 interface ChiperNetwork {
+
+    @Headers("Content-Type: application/json; charset=UTF-8")
+    @GET(Constants.MOVIE_NOW_PLAYING)
+    suspend fun movieNowPlaying(
+        @Query("api_key") api_key: String,
+        @Query("language") language: String,
+        @Query("page") page: String
+    ): MovieNowPlaying
 
     @GET("movie/popular")
     fun getMoviesPopular(@Query("page") page: Int): Call<MovieResponse>
@@ -48,7 +58,7 @@ interface ChiperNetwork {
                 .addInterceptor(object : Interceptor {
                     override fun intercept(chain: Interceptor.Chain): Response {
                         val original = chain.request()
-                        val originalHttpUrl = original.url()
+                        val originalHttpUrl = original.url
 
                         val url = originalHttpUrl.newBuilder()
                             .addQueryParameter("api_key", Constants.API_KEY)
