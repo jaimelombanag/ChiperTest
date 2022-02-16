@@ -4,10 +4,12 @@ pluginManagement {
         google()
         mavenCentral()
     }
+
     plugins {
         id 'com.android.application' version '7.1.0-alpha11'
         id 'com.android.library' version '7.1.0-alpha11'
         id 'org.jetbrains.kotlin.android' version '1.6.0'
+        id "org.jetbrains.kotlin.plugin.parcelize" version "1.6.0-M1"
     }
 }
 dependencyResolutionManagement {
