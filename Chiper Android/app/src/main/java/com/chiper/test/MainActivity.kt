@@ -1,57 +1,45 @@
 package com.chiper.test
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
+import com.chiper.test.databinding.ActivityMainBinding
+import com.chiper.test.application.MyApp
+import com.chiper.test.data.room.MovieViewModel
+import com.chiper.test.data.room.MovieViewModelFactory
+
 
 class MainActivity : AppCompatActivity() {
-
-    private val movieViewModel: MovieViewModel by viewModels {
-        MovieViewModelFactory(MyApp.instance.repository)
-    }
-    private val peliculaViewModel by viewModels<PeliculasViewModel> {
-        PeliculasViewModelFactory(
-            RepositoryMovieImpl(DataSource())
-        )
+    private lateinit var binding: ActivityMainBinding
+    private val wordViewModel: MovieViewModel by viewModels {
+        MovieViewModelFactory((application as MyApp).repository)
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setupObservers()
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+//        wordViewModel.allWords.observe(this) { words ->
+//            // Update the cached copy of the words in the adapter.
+//            Log.i("Movies", ".....  " + words.toString())
+//
+//        }
+
+
+
+        //val movie = Movies("valerie la bella", "Esta es la pelicula de mi princesa hermosa que amo con todo mi corazon", "la imagen" )
+        //wordViewModel.insert(movie)
+        //wordViewModel.delete()
 
     }
 
-    fun setupObservers(){
-        peliculaViewModel.movieNowPlaying().observe(this, Observer {
 
-            Log.i("Movies", "------La lista es: $it")
 
-//            when(it){
-//                is Resource.Loading ->{
-//                    binding.progressBar.visibility = View.VISIBLE
-//                }
-//                is Resource.Success ->{
-//                    binding.progressBar.visibility = View.GONE
-//                    binding.rvMovieNowPlaying.adapter = AdapterMovies(requireContext(),  it.data.data.results, this)
-//                    movieViewModel.delete()
-//                    saveMovies(it.data.data.results)
-//                }
-//                is Resource.Failure ->{
-//                    binding.progressBar.visibility = View.GONE
-//                    movieViewModel.allMovies.observe(this) { movie ->
-//                        Log.i("Movies", "------EL tamaño de la lista es: " + movie.size)
-//                        binding.rvMovieNowPlaying.adapter = AdapterMoviesRoom(requireContext(),  movie, this)
-//                    }
-//                    Toast.makeText(requireContext(), "Error extracion de datos ${it.exception}", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-        })
-    }
+
+
 }

@@ -13,21 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chiper.test
+package com.chiper.test.data.room
 
 import androidx.annotation.WorkerThread
-import app.kaisa.tmdb.model.Movie
-import com.chiper.test.room.MovieDao
 import kotlinx.coroutines.flow.Flow
 
 
 class MovieRepository(private val movieDao: MovieDao) {
 
-    val allMovies: Flow<MutableList<Movie>> = movieDao.loadMovies()
+    val allMovies: Flow<MutableList<Movies>> = movieDao.getAlphabetizedWords()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insert(movies: Movie) {
+    suspend fun insert(movies: Movies) {
         movieDao.insert(movies)
     }
 

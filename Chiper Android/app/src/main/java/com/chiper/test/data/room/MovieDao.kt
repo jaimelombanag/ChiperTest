@@ -1,21 +1,20 @@
-package com.chiper.test.room
+package com.chiper.test.data.room
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import app.kaisa.tmdb.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * FROM movies")
-    fun loadMovies(): Flow<MutableList<Movie>>
+    @Query("SELECT * FROM movie_table")
+    fun getAlphabetizedWords(): Flow<MutableList<Movies>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(movies: Movie)
+    suspend fun insert(movies: Movies)
 
-    @Query("DELETE FROM movies")
+    @Query("DELETE FROM movie_table")
     suspend fun deleteAll()
 }

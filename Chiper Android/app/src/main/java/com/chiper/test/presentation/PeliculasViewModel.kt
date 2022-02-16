@@ -1,9 +1,10 @@
-package com.chiper.test
-
+package com.chiper.test.presentation
 
 import androidx.lifecycle.*
-import kotlinx.coroutines.Dispatchers
+import com.chiper.test.application.Resource
+import com.chiper.test.remote.IRepositoryMovie
 
+import kotlinx.coroutines.Dispatchers
 
 class PeliculasViewModel(private val repositoryMovie: IRepositoryMovie) : ViewModel() {
 

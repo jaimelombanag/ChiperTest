@@ -1,8 +1,7 @@
-package com.chiper.test.model
+package com.chiper.test.data.model
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
-
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MovieNowPlaying(

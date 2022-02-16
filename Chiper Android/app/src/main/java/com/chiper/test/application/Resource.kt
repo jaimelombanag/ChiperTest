@@ -1,4 +1,4 @@
-package com.chiper.test
+package com.chiper.test.application
 
 sealed class Resource<out T> {
     class Loading<out T>: Resource<T>()
