@@ -12,7 +12,8 @@ object RetrofitService {
 
     val webServicesMovie: WebServicesMovieDB by lazy{
         Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL_THE_MOVIE_DB)
+            .baseUrl(Constants.BASE_URL_THE_MOVIE_DB_V4)
+            //.baseUrl(Constants.BASE_URL_THE_MOVIE_DB)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(WebServicesMovieDB::class.java)

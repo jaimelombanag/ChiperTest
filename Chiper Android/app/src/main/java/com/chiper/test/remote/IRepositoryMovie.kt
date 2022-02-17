@@ -7,5 +7,7 @@ import com.chiper.test.data.model.MovieNowPlaying
 
 interface IRepositoryMovie {
     //movieNowPlaying
-    suspend fun movieNowPlaying(): Resource.Success<MovieNowPlaying>
+    //suspend fun movieNowPlaying(): Resource.Success<MovieNowPlaying>
+    //loadMovies
+    suspend fun loadMovies(): Resource.Success<MovieNowPlaying>
 }

@@ -1,5 +1,6 @@
 package com.chiper.test.ui.peliculas
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -76,6 +77,7 @@ class PeliculasFragment : Fragment(), AdapterMovies.onMovieClickListener, Adapte
         binding.rvMovieNowPlaying.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvMovieNowPlaying.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
     }
+    @SuppressLint("FragmentLiveDataObserve")
     fun setupObservers(){
         peliculaViewModel.movieNowPlaying().observe(viewLifecycleOwner, Observer {
             when(it){
@@ -86,6 +88,7 @@ class PeliculasFragment : Fragment(), AdapterMovies.onMovieClickListener, Adapte
                     binding.progressBar.visibility = View.GONE
                     binding.rvMovieNowPlaying.adapter = AdapterMovies(requireContext(),  it.data.data.results, this)
                     movieViewModel.delete()
+                    Log.i("Movies", "------EL tamaño de la lista1 es: " + it.data.data.results.size)
                     saveMovies(it.data.data.results)
                 }
                 is Resource.Failure ->{

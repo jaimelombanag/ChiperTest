@@ -10,8 +10,12 @@ import com.chiper.test.remote.IRepositoryMovie
 
 class RepositoryMovieImpl(private val dataSource: DataSource): IRepositoryMovie {
 
-    override suspend fun movieNowPlaying(): Resource.Success<MovieNowPlaying> {
-        return dataSource.movieNowPlaying(Constants.API_THE_MOVIE_DB, "es-ES", "1")
+//    override suspend fun movieNowPlaying(): Resource.Success<MovieNowPlaying> {
+//        return dataSource.movieNowPlaying(Constants.API_THE_MOVIE_DB, "es-ES", "1")
+//    }
+
+    override suspend fun loadMovies(): Resource.Success<MovieNowPlaying> {
+        return dataSource.loadMovies( "1")
     }
 
 }

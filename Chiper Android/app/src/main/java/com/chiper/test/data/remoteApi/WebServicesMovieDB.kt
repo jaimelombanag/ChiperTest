@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface WebServicesMovieDB {
 
     @Headers("Content-Type: application/json; charset=UTF-8")
-    @GET(Constants.MOVIE_NOW_PLAYING)
+    @GET("movie/popular")
     suspend fun movieNowPlaying(
         @Query("api_key") api_key: String,
         @Query("language") language: String,
@@ -23,5 +23,15 @@ interface WebServicesMovieDB {
         @Query("api_key") api_key: String,
         @Query("language") language: String
     ): MovieNowPlaying
+
+
+
+    @Headers(
+        "Authorization: ${Constants.TOKEN_ACCESS}"
+    )
+    @GET("list/1")
+    suspend fun loadMovies(): MovieNowPlaying
+
+
 
 }
