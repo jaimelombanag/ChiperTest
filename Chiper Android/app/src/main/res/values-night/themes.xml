@@ -13,4 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="SplashTheme" parent="Theme.Chiper">
+        <item name="android:windowBackground">@color/red_200</item>
+    </style>
 </resources>
