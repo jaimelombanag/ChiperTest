@@ -2,12 +2,9 @@ package com.chiper.test
 
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.chiper.test.databinding.ActivityMainBinding
-import com.chiper.test.application.MyApp
-import com.chiper.test.data.room.MovieViewModel
-import com.chiper.test.data.room.MovieViewModelFactory
+
 
 
 class MainActivity : AppCompatActivity() {

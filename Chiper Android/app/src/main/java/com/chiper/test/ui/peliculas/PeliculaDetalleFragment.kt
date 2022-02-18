@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.chiper.test.R
 import com.chiper.test.application.Constants
-import com.chiper.test.data.model.Movie
-import com.chiper.test.data.model.Result
 import com.chiper.test.databinding.FragmentPeliculaDetalleBinding
 import com.chiper.test.ui.fragment.Movies
 

@@ -1,33 +1,20 @@
 package com.chiper.test.ui.fragment
 
-import android.app.AlertDialog
-import android.content.ClipData
-import android.os.AsyncTask
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.paging.*
-import androidx.paging.rxjava2.mapAsync
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.room.Room
 import com.chiper.test.R
-import com.chiper.test.application.MyApp
-import com.chiper.test.data.model.Result
 import com.chiper.test.databinding.FragmentMovieListBinding
-import com.chiper.test.ui.peliculas.AdapterMovies
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.concurrent.Executor
 
 class MovieRxFragment : Fragment() {
 
