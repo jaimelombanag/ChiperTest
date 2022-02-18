@@ -24,13 +24,14 @@ class MoviesMapper {
                         it.title,
                         it.voteAverage,
                         it.overview,
-                        it.releaseDate?.let { date ->
-                            if (date.isNotEmpty()) {
-                                SimpleDateFormat("YYYY-mm-dd", locale).parse(date)
-                            } else {
-                                null
-                            }
-                        }
+                        it.releaseDate
+//                        it.releaseDate?.let { date ->
+//                            if (date.isNotEmpty()) {
+//                                SimpleDateFormat("YYYY-mm-dd", locale).parse(date)
+//                            } else {
+//                                null
+//                            }
+//                        }
                     )
                 }
             )

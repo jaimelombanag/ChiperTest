@@ -1,6 +1,7 @@
 package com.chiper.test.ui.fragment
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.IgnoredOnParcel
@@ -21,18 +22,18 @@ data class Movies(
     @Entity(tableName = "movies")
     data class Movie(
         @PrimaryKey(autoGenerate = true) val id: Long = 0,
-        val movieId: Long,
-        val popularity: Double,
-        val video: Boolean,
-        val poster: String?,
-        val adult: Boolean,
-        val backdrop: String?,
-        val originalLanguage: String,
-        val originalTitle: String,
-        val title: String,
-        val voteAverage: Double,
-        val overview: String,
-        val releaseDate: Date?
+        @ColumnInfo(name = "movieId") val movieId: Long,
+        @ColumnInfo(name = "popularity") val popularity: Double,
+        @ColumnInfo(name = "video") val video: Boolean,
+        @ColumnInfo(name = "poster") val poster: String?,
+        @ColumnInfo(name = "adult") val adult: Boolean,
+        @ColumnInfo(name = "backdrop") val backdrop: String?,
+        @ColumnInfo(name = "originalLanguage") val originalLanguage: String,
+        @ColumnInfo(name = "originalTitle") val originalTitle: String,
+        @ColumnInfo(name = "title") val title: String,
+        @ColumnInfo(name = "voteAverage") val voteAverage: Double,
+        @ColumnInfo(name = "overview") val overview: String,
+        @ColumnInfo(name = "releaseDate") val releaseDate: String?
     ) : Parcelable
 
     @Parcelize
