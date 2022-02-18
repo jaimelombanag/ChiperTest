@@ -12,9 +12,7 @@ import com.chiper.test.data.room.MovieViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val wordViewModel: MovieViewModel by viewModels {
-        MovieViewModelFactory((application as MyApp).repository)
-    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

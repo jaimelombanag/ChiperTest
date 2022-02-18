@@ -62,6 +62,10 @@ class PeliculasFragment : Fragment(), AdapterMovies.onMovieClickListener, Adapte
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
+
+
+        Log.i("Movies", "==============entra al fragment que NO es==============")
+
         //OnRefreshListener executes when layout is pull down to perform a refresh
         //binding.swipeContainer.setOnRefreshListener {onRefresh()}
         binding.btnRefresh.setOnClickListener { onRefresh() }
