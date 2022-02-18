@@ -63,93 +63,53 @@ class MovieRxFragment : Fragment() {
 
         mBinding.list.layoutManager = GridLayoutManager(view.context, 2)
         mBinding.list.adapter = mAdapter
-        mBinding.list.adapter = mAdapter.withLoadStateFooter(
-            footer = LoadingGridStateAdapter()
-        )
+
         mAdapter.addLoadStateListener { loadState ->
+
+            Log.i("Movies", "==========loadState  ${loadState.source.append}")
+            Log.i("Movies", "==========loadState  ${loadState.source.prepend}")
+            Log.i("Movies", "==========loadState  ${loadState.append}")
+            Log.i("Movies", "==========loadState  ${loadState.prepend}")
             val errorState = loadState.source.append as? LoadState.Error
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
 
-            errorState?.let {
-                AlertDialog.Builder(view.context)
-                    .setTitle(R.string.error)
-                    .setMessage(it.error.localizedMessage)
-                    .setNegativeButton(R.string.cancel) { dialog, _ ->
-                        dialog.dismiss()
+
+            if(!loadState.source.prepend.endOfPaginationReached || !loadState.prepend.endOfPaginationReached){
+                GlobalScope.launch {
+                    viewModelRoom.items.collectLatest {
+                        mAdapter.submitData(lifecycle, it)
                     }
-                    .setPositiveButton(R.string.retry) { _, _ ->
-                        mAdapter.retry()
-                    }
-                    .show()
+                 }
             }
-        }
 
-        GlobalScope.launch {
-
-            val db = Room.databaseBuilder(
-                MyApp.context,
-                MoviesDatabase::class.java, "movies"
-            ).build()
-                .moviesDao()
-
-            val items = Pager(
-                PagingConfig(
-                    pageSize = 2,
-                    enablePlaceholders = true,
-                    maxSize = 150
-                )
-            ){
-                db.getAlphabetizedWords()
-            }.flow
-            Log.i("Movies", "================   ${items.toString()}")
-            items.collectLatest {
-                mAdapter.submitData(lifecycle, it)
-            }
-            Log.i("Movies", "================   ${db.getMovies().size}")
-
-
-//            viewModelRoom.items.collectLatest {
-//                Log.i("Movies", "================   $it")
-//
-//            items.collectLatest {
-//                mAdapter.submitData(lifecycle, it)
-//            }
-
-
-
+//            errorState?.let {
+//                AlertDialog.Builder(view.context)
+//                    .setTitle(R.string.error)
+//                    .setMessage(it.error.localizedMessage)
+//                    .setNegativeButton(R.string.cancel) { dialog, _ ->
+//                        dialog.dismiss()
+//                    }
+//                    .setPositiveButton(R.string.retry) { _, _ ->
+//                        mAdapter.retry()
+//                    }
+//                    .show()
 //            }
         }
 
 
-//        mDisposable.add(mViewModel.getFavoriteMovies().subscribe {
-//            mAdapter.submitData(lifecycle, it)
-//        })
+
+
+        mDisposable.add(mViewModel.getFavoriteMovies().subscribe {
+            Log.i("Movies", "===================  ${it}")
+            mAdapter.submitData(lifecycle, it)
+        })
 
         return view
     }
 
-    class UiThreadExecutor: Executor {
-        private val handler = Handler (Looper.getMainLooper ())
-        override fun execute (command: Runnable) {
-            handler.post (command)
-        }
-    }
 
-    class ListDataSource (private val items: List<Movies.Movie>): PageKeyedDataSource<Int, Movies.Movie>() {
-        override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movies.Movie>) {
-            callback.onResult (items, 0, items.size)
-        }
-
-        override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movies.Movie>) {
-
-        }
-
-        override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movies.Movie>) {
-
-        }
-    }
 
     override fun onDestroyView() {
         mDisposable.dispose()
