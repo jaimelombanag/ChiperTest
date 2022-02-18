@@ -11,7 +11,7 @@ import com.chiper.test.R
 import coil.load
 import com.chiper.test.databinding.MovieGridItemBinding
 import androidx.navigation.fragment.findNavController
-
+import com.chiper.test.application.Constants
 
 
 class MovieGridViewHolder(private val binding: MovieGridItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -19,9 +19,14 @@ class MovieGridViewHolder(private val binding: MovieGridItemBinding) : RecyclerV
 
     fun bind(movie: Movies.Movie) {
         with(movie) {
-            binding.poster.load(poster?.medium) {
-                crossfade(true)
-            }
+            //binding.poster.load(poster?.medium) {
+            //    crossfade(true)
+            //}
+
+            binding.poster.load("${Constants.IMAGE_MEDIUM}$poster")
+
+            binding.title.text = title
+
             itemView.setOnClickListener {
                 Log.i("Movies", "==========SE OPRIME  ${movie.title}")
                 val bundle = Bundle()
