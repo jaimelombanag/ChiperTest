@@ -21,7 +21,8 @@ data class Movies(
     @Parcelize
     @Entity(tableName = "movies")
     data class Movie(
-        @PrimaryKey(autoGenerate = true) val id: Long = 0,
+        //@PrimaryKey(autoGenerate = true) val id: Long = 0,
+        @PrimaryKey(autoGenerate = true) val _id: Int,
         @ColumnInfo(name = "movieId") val movieId: Long,
         @ColumnInfo(name = "popularity") val popularity: Double,
         @ColumnInfo(name = "video") val video: Boolean,

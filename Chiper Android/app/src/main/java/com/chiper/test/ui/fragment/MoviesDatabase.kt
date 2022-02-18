@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-@Database(entities = [Movies.Movie::class], version = 1)
+@Database(entities = arrayOf(Movies.Movie::class), version = 1)
 abstract class MoviesDatabase : RoomDatabase() {
-    abstract fun MoviesDatabase(): MoviesDao
+    abstract fun moviesDao(): MoviesDao
 }
