@@ -8,13 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chiper.test.R
+import com.chiper.test.data.model.Result
 import com.chiper.test.databinding.FragmentMovieListBinding
+import com.chiper.test.ui.peliculas.AdapterMovies
 import io.reactivex.disposables.CompositeDisposable
 
 class MovieRxFragment : Fragment() {
+
+
     private val mDisposable = CompositeDisposable()
 
     private lateinit var mBinding: FragmentMovieListBinding
@@ -78,4 +83,5 @@ class MovieRxFragment : Fragment() {
 
         super.onDestroyView()
     }
+
 }

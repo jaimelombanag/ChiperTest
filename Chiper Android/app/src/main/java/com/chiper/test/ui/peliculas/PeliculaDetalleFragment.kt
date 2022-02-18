@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.chiper.test.R
 import com.chiper.test.application.Constants
+import com.chiper.test.data.model.Movie
 import com.chiper.test.data.model.Result
 import com.chiper.test.databinding.FragmentPeliculaDetalleBinding
+import com.chiper.test.ui.fragment.Movies
 
 
 private const val ARG_PARAM1 = "param1"
@@ -20,7 +22,7 @@ class PeliculaDetalleFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var result: Result
+    private lateinit var result: Movies.Movie
     private var _binding: FragmentPeliculaDetalleBinding? = null
     private val binding get() = _binding!!
     private var favorite = false
@@ -46,7 +48,7 @@ class PeliculaDetalleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().let {
             result = it.getParcelable("result")!!
-            Glide.with(requireContext()).load("${Constants.IMG_MOVIE_DB}${result.posterPath}").centerCrop().into(binding.imgPosterMovie)
+            Glide.with(requireContext()).load("${Constants.IMG_MOVIE_DB}${result.poster}").centerCrop().into(binding.imgPosterMovie)
             binding.tvTitleMovie.text = "${result.title}"
             binding.tvRateMovie.text = "Calificación: ${result.voteAverage}"
             binding.tvDateMovie.text = "Fecha: ${result.releaseDate}"

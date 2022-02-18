@@ -28,7 +28,7 @@
         >
 
         <action
-            android:id="@+id/action_navigation_peliculas_to_peliculaDetalleFragment"
+            android:id="@+id/action_navigation_movies_to_peliculaDetalleFragment"
             app:destination="@id/peliculaDetalleFragment" />
     </fragment>
 

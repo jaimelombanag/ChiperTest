@@ -125,7 +125,7 @@ class PeliculasFragment : Fragment(), AdapterMovies.onMovieClickListener, Adapte
     override fun onMovieClick(result: Result, position: Int) {
         val bundle = Bundle()
         bundle.putParcelable("result", result)
-        findNavController().navigate(R.id.action_navigation_peliculas_to_peliculaDetalleFragment, bundle)
+        findNavController().navigate(R.id.action_navigation_movies_to_peliculaDetalleFragment, bundle)
     }
 
     override fun onMovieClickRoom(movies: Movies, position: Int) {
@@ -149,7 +149,7 @@ class PeliculasFragment : Fragment(), AdapterMovies.onMovieClickListener, Adapte
         )
         binding.btnRefresh.visibility = View.GONE
         bundle.putParcelable("result", result)
-        findNavController().navigate(R.id.action_navigation_peliculas_to_peliculaDetalleFragment, bundle)
+        findNavController().navigate(R.id.action_navigation_movies_to_peliculaDetalleFragment, bundle)
     }
 
     fun onRefresh() {
