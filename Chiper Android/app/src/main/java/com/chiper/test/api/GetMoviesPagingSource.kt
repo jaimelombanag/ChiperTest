@@ -2,7 +2,6 @@ package com.chiper.test.api
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava2.RxPagingSource
-import com.chiper.test.api.TMDBService
 import com.chiper.test.model.Movies
 import com.chiper.test.model.MoviesMapper
 
@@ -12,8 +11,8 @@ import java.util.*
 
 
 
-class GetMoviesRxPagingSource(
-    private val service: TMDBService,
+class GetMoviesPagingSource(
+    private val service: ApiService,
     private val apiKey: String,
     private val mapper: MoviesMapper,
     private val locale: Locale

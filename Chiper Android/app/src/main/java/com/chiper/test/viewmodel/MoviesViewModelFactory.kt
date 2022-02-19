@@ -2,15 +2,15 @@ package com.chiper.test.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.chiper.test.repository.GetMoviesRxRepository
+import com.chiper.test.repository.MoviesRepository
 
 
-class GetMoviesRxViewModelFactory(private val repository: GetMoviesRxRepository): ViewModelProvider.Factory {
+class MoviesViewModelFactory(private val repository: MoviesRepository): ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(GetMoviesRxViewModel::class.java)) {
-            return GetMoviesRxViewModel(
+        if (modelClass.isAssignableFrom(MoviesViewModel::class.java)) {
+            return MoviesViewModel(
                 repository
             ) as T
         }

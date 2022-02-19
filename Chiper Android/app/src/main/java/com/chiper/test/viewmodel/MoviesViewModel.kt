@@ -7,11 +7,11 @@ import androidx.paging.PagingData
 import androidx.paging.filter
 import androidx.paging.rxjava2.cachedIn
 import com.chiper.test.model.Movies
-import com.chiper.test.repository.GetMoviesRxRepository
+import com.chiper.test.repository.MoviesRepository
 import io.reactivex.Flowable
 
 
-class GetMoviesRxViewModel(private val repository: GetMoviesRxRepository) : ViewModel() {
+class MoviesViewModel(private val repository: MoviesRepository) : ViewModel() {
     @SuppressLint("CheckResult")
     fun getFavoriteMovies(): Flowable<PagingData<Movies.Movie>> {
         return repository

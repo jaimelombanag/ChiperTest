@@ -4,12 +4,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.rxjava2.flowable
-import com.chiper.test.api.GetMoviesRxPagingSource
+import com.chiper.test.api.GetMoviesPagingSource
 import com.chiper.test.model.Movies
 import io.reactivex.Flowable
 
-class GetMoviesRxRepositoryImpl(private val pagingSource: GetMoviesRxPagingSource):
-    GetMoviesRxRepository {
+class MoviesRepositoryImpl(private val pagingSource: GetMoviesPagingSource):
+    MoviesRepository {
 
     override fun getMovies(): Flowable<PagingData<Movies.Movie>> {
         return Pager(

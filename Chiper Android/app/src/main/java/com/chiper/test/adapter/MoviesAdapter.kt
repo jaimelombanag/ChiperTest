@@ -14,7 +14,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class MoviesRxAdapter() : PagingDataAdapter<Movies.Movie, MovieGridViewHolder>(
+class MoviesAdapter() : PagingDataAdapter<Movies.Movie, MovieGridViewHolder>(
     COMPARATOR
 ) {
 

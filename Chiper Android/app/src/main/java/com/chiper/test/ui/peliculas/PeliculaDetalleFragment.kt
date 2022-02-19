@@ -1,4 +1,4 @@
-package com.chiper.test.ui.status_movie
+package com.chiper.test.ui.peliculas
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

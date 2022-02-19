@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
-interface TMDBService {
+interface ApiService {
 
     @GET("discover/movie?sort_by=original_title.asc&region=ID")
     suspend fun moviesFlow(
@@ -39,7 +39,7 @@ interface TMDBService {
 
     companion object {
 
-        fun create(): TMDBService {
+        fun create(): ApiService {
             val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BASIC
 
@@ -53,7 +53,7 @@ interface TMDBService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
-                .create(TMDBService::class.java)
+                .create(ApiService::class.java)
         }
     }
 }

@@ -2,11 +2,11 @@ package com.chiper.test
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import com.chiper.test.api.TMDBService
+import com.chiper.test.api.ApiService
 import com.chiper.test.model.MoviesMapper
-import com.chiper.test.repository.GetMoviesRxRepositoryImpl
-import com.chiper.test.api.GetMoviesRxPagingSource
-import com.chiper.test.viewmodel.GetMoviesRxViewModelFactory
+import com.chiper.test.repository.MoviesRepositoryImpl
+import com.chiper.test.api.GetMoviesPagingSource
+import com.chiper.test.viewmodel.MoviesViewModelFactory
 import java.util.*
 
 object Injection {
@@ -17,19 +17,19 @@ object Injection {
 
     fun provideRxViewModel(context: Context): ViewModelProvider.Factory {
         val pagingSource =
-            GetMoviesRxPagingSource(
-                service = TMDBService.create(),
+            GetMoviesPagingSource(
+                service = ApiService.create(),
                 apiKey = "",
                 mapper = MoviesMapper(),
                 locale = provideLocale()
             )
 
         val repository =
-            GetMoviesRxRepositoryImpl(
+            MoviesRepositoryImpl(
                 pagingSource = pagingSource
             )
 
-        return GetMoviesRxViewModelFactory(
+        return MoviesViewModelFactory(
             repository
         )
     }

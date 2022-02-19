@@ -1,4 +1,4 @@
-package com.chiper.test.ui.movies
+package com.chiper.test.ui.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +11,9 @@ import androidx.paging.*
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chiper.test.Injection
 import com.chiper.test.R
-import com.chiper.test.adapter.MoviesRxAdapter
+import com.chiper.test.adapter.MoviesAdapter
 import com.chiper.test.databinding.FragmentMovieListBinding
-import com.chiper.test.viewmodel.GetMoviesRxViewModel
+import com.chiper.test.viewmodel.MoviesViewModel
 import com.chiper.test.viewmodel.ViewModelRoom
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.GlobalScope
@@ -26,8 +26,8 @@ class MovieRxFragment : Fragment() {
     private val mDisposable = CompositeDisposable()
 
     private lateinit var mBinding: FragmentMovieListBinding
-    private lateinit var mViewModel: GetMoviesRxViewModel
-    private lateinit var mAdapter: MoviesRxAdapter
+    private lateinit var mViewModel: MoviesViewModel
+    private lateinit var mAdapter: MoviesAdapter
     private lateinit var viewModelRoom: ViewModelRoom
 
     override fun onCreateView(
@@ -45,27 +45,22 @@ class MovieRxFragment : Fragment() {
         activity?.title = getString(R.string.rx_with_paging_source)
 
         mViewModel = ViewModelProvider(this, Injection.provideRxViewModel(view.context)).get(
-            GetMoviesRxViewModel::class.java)
+            MoviesViewModel::class.java)
 
         viewModelRoom = ViewModelProvider(this).get(ViewModelRoom::class.java)
 
 
-        mAdapter = MoviesRxAdapter()
+        mAdapter = MoviesAdapter()
 
         mBinding.list.layoutManager = GridLayoutManager(view.context, 2)
         mBinding.list.adapter = mAdapter
 
         mAdapter.addLoadStateListener { loadState ->
 
-            Log.i("Movies", "==========loadState  ${loadState.source.append}")
-            Log.i("Movies", "==========loadState  ${loadState.source.prepend}")
-            Log.i("Movies", "==========loadState  ${loadState.append}")
-            Log.i("Movies", "==========loadState  ${loadState.prepend}")
             val errorState = loadState.source.append as? LoadState.Error
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
-
 
             if(!loadState.source.prepend.endOfPaginationReached || !loadState.prepend.endOfPaginationReached){
                 GlobalScope.launch {
@@ -89,9 +84,6 @@ class MovieRxFragment : Fragment() {
 //            }
         }
 
-
-
-
         mDisposable.add(mViewModel.getFavoriteMovies().subscribe {
             Log.i("Movies", "===================  ${it}")
             mAdapter.submitData(lifecycle, it)
@@ -100,11 +92,8 @@ class MovieRxFragment : Fragment() {
         return view
     }
 
-
-
     override fun onDestroyView() {
         mDisposable.dispose()
-
         super.onDestroyView()
     }
 

@@ -5,6 +5,6 @@ import androidx.paging.PagingData
 import com.chiper.test.model.Movies
 import io.reactivex.Flowable
 
-interface GetMoviesRxRepository {
+interface MoviesRepository {
     fun getMovies(): Flowable<PagingData<Movies.Movie>>
 }
