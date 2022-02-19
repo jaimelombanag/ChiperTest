@@ -1,4 +1,4 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.viewholder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

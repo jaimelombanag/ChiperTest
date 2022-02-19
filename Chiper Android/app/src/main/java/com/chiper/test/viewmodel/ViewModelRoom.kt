@@ -1,4 +1,4 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,6 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.room.Room
 import com.chiper.test.application.MyApp
+import com.chiper.test.room.MoviesDatabase
 
 class ViewModelRoom(app: Application) : AndroidViewModel(app) {
 

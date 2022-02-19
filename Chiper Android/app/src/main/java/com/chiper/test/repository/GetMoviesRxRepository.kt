@@ -1,7 +1,8 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.repository
 
 
 import androidx.paging.PagingData
+import com.chiper.test.model.Movies
 import io.reactivex.Flowable
 
 interface GetMoviesRxRepository {

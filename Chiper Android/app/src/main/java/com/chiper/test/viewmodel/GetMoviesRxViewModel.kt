@@ -1,15 +1,13 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.viewmodel
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.filter
-import androidx.paging.map
 import androidx.paging.rxjava2.cachedIn
-import androidx.room.Room
-import com.chiper.test.application.MyApp.Companion.context
+import com.chiper.test.model.Movies
+import com.chiper.test.repository.GetMoviesRxRepository
 import io.reactivex.Flowable
 
 

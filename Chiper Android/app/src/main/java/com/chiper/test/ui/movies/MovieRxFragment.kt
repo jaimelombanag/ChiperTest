@@ -1,4 +1,4 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.ui.movies
 
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.*
 import androidx.recyclerview.widget.GridLayoutManager
+import com.chiper.test.Injection
 import com.chiper.test.R
+import com.chiper.test.adapter.MoviesRxAdapter
 import com.chiper.test.databinding.FragmentMovieListBinding
+import com.chiper.test.viewmodel.GetMoviesRxViewModel
+import com.chiper.test.viewmodel.ViewModelRoom
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collectLatest

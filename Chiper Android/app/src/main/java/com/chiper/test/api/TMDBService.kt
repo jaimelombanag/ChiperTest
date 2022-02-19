@@ -1,7 +1,7 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.api
 
-import androidx.compose.ui.unit.Constraints
 import com.chiper.test.application.Constants
+import com.chiper.test.model.MoviesResponse
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

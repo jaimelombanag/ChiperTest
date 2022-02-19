@@ -1,4 +1,4 @@
-package com.chiper.test.ui.peliculas
+package com.chiper.test.ui.status_movie
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.chiper.test.R
 import com.chiper.test.application.Constants
 import com.chiper.test.databinding.FragmentPeliculaDetalleBinding
-import com.chiper.test.ui.fragment.Movies
+import com.chiper.test.model.Movies
 
 
 private const val ARG_PARAM1 = "param1"

@@ -1,7 +1,8 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.chiper.test.repository.GetMoviesRxRepository
 
 
 class GetMoviesRxViewModelFactory(private val repository: GetMoviesRxRepository): ViewModelProvider.Factory {

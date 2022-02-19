@@ -1,7 +1,10 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.api
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava2.RxPagingSource
+import com.chiper.test.api.TMDBService
+import com.chiper.test.model.Movies
+import com.chiper.test.model.MoviesMapper
 
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers

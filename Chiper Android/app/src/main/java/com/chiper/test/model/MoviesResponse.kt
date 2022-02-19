@@ -1,4 +1,4 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.model
 
 import com.google.gson.annotations.SerializedName
 

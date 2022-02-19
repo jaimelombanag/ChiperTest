@@ -1,4 +1,4 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.adapter
 
 import android.util.Log
 import android.view.ViewGroup
@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.paging.PagingDataAdapter
 import androidx.room.Room
 import com.chiper.test.application.MyApp.Companion.context
+import com.chiper.test.model.Movies
+import com.chiper.test.room.MoviesDatabase
+import com.chiper.test.viewholder.MovieGridViewHolder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

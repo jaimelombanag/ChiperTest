@@ -1,4 +1,4 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.viewholder
 
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chiper.test.R
 import coil.load
 import com.chiper.test.databinding.MovieGridItemBinding
-import androidx.navigation.fragment.findNavController
 import com.chiper.test.application.Constants
+import com.chiper.test.model.Movies
 
 
 class MovieGridViewHolder(private val binding: MovieGridItemBinding) : RecyclerView.ViewHolder(binding.root) {

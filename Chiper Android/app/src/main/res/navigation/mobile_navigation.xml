@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/navigation_movies"
-        android:name="com.chiper.test.ui.fragment.MovieRxFragment"
+        android:name="com.chiper.test.ui.movies.MovieRxFragment"
         android:label="@string/title_peliculas"
         tools:layout="@layout/fragment_movie_list"
         >
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/peliculaDetalleFragment"
-        android:name="com.chiper.test.ui.peliculas.PeliculaDetalleFragment"
+        android:name="com.chiper.test.ui.status_movie.PeliculaDetalleFragment"
         android:label="fragment_pelicula_detalle"
         tools:layout="@layout/fragment_pelicula_detalle"/>
 

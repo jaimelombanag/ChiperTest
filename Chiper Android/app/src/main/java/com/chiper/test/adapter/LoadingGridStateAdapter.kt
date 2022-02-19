@@ -1,8 +1,9 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.adapter
 
 import android.view.ViewGroup
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
+import com.chiper.test.viewholder.LoadingGridStateViewHolder
 
 
 class LoadingGridStateAdapter: LoadStateAdapter<LoadingGridStateViewHolder>() {

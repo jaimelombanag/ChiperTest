@@ -1,6 +1,5 @@
-package com.chiper.test.ui.fragment
+package com.chiper.test.model
 
-import java.text.SimpleDateFormat
 import java.util.*
 
 class MoviesMapper {

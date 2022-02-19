@@ -1,4 +1,4 @@
-package com.chiper.test
+package com.chiper.test.ui
 
 
 import android.os.Bundle
