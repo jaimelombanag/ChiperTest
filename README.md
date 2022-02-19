@@ -11,6 +11,9 @@ Test Chiper
 •	AndroidX
 •	Base de datos Room
 •	RxJava para recargar las pagina con nuevas peliculas
+•	Se agrega en el manifest soporte para tabletas
+•	Se crean carpetas para el soporte de tabletas.
+
 
 ➢ Capas de la aplicación
 
